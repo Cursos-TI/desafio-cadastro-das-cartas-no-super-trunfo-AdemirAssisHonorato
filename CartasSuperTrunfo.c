@@ -1,57 +1,11 @@
 #include <stdio.h>
 
-/* ATIVIDADE SUPER TRUNFO NIVEL INTERMEDIARIO 
+/* ATIVIDADE SUPER TRUNFO NIVEL MESTRE
 NOME: ADEMIR DE ASSIS DA SILVA GONÇALVES JUNIOR CURSO: ENGENHARIA DE SOFTWARE
 
-OBS: DADOS DE DENSIDADE POPULACIONAL E PIB PER CAPTA ADICIONADAS JUNTO COM AS CORREÇOES SUGERIDAS EM E-MAIL ENVIADO.
-AS CORREÇÕES ERAM SOBRE O USO DOS ESPECIFICADORES.
+OBS: SUPER PODER ADICIONADO, MODIFICAÇÃO DE POPULAÇÃO PARA UNSINGED LONG INT E COMPARAÇÃO SIMPLES ADICIONADA
 
 DESDE JÁ AGRADEÇO.
-
-*/
-
-/*
-Carta 1:
-
-Estado: A
-
-Código: A01
-
-Nome da Cidade: São Paulo
-
-População: 12325000
-
-Área: 1521.11 km²
-
-PIB: 699.28 bilhões de reais
-
-Número de Pontos Turísticos: 50
-
-Densidade Populacional: 8102.47 hab/km²
-
-PIB per Capita: 56724.32 reais
-
- 
-
-Carta 2:
-
-Estado: B
-
-Código: B02
-
-Nome da Cidade: Rio de Janeiro
-
-População: 6748000
-
-Área: 1200.25 km²
-
-PIB: 300.50 bilhões de reais
-
-Número de Pontos Turísticos: 30
-
-Densidade Populacional: 8102.47 hab/km²
-
-PIB per Capita: 56724.32 reais
 
 */
 
@@ -61,9 +15,10 @@ int main(){
 //AQUI FICA AS VARIAVEIS
 
 int ponto_turistico, ponto_turistico_;    
-char estado[2], codigo[4], cidade[120], estado_[2], codigo_[4], cidade_[120];
-float populacao, area, pib, populacao_, area_, pib_;
-float den_pop1, den_pop2, pib_per1, pib_per2; // VARIAVEIS NIVEL INTERMEDIARIO
+char estado[80], codigo[4], cidade[120], estado_[80], codigo_[4], cidade_[120];
+float area, pib, area_, pib_, den_pop1, den_pop2, pib_per1, pib_per2;
+unsigned long int populacao, populacao_;
+float super_poder, super_poder_;
 
 //AQUI INICIA OS DADOS DA CARTA 1
     
@@ -78,7 +33,7 @@ printf("Insira o nome da cidade\n");
 scanf("%s", cidade);
 
 printf("Digite o numero da população\n");
-scanf("%f", &populacao);
+scanf("%ul", &populacao);
 
 printf("Digite a área:\n");
 scanf("%f", &area);
@@ -103,7 +58,7 @@ printf("Insira o nome da cidade\n");
 scanf("%s", cidade_);
 
 printf("Digite o numero da população\n");
-scanf("%f", &populacao_);
+scanf("%ul", &populacao_);
 
 printf("Digite a área:\n");
 scanf("%f", &area_);
@@ -116,26 +71,27 @@ scanf("%d", &ponto_turistico_);
 
 
 //AQUI INICIA O RESULTADO, SERÁ RESULTADO CARTA 1
-
-/* CALCULO NIVEL INTERMEDIARIO COMEÇA AQUI*/
 den_pop1 = (float)(populacao / area);
 den_pop2 = (float)(populacao_ / area_);
 
 pib_per1 = (float)(pib / populacao);
 pib_per2 = (float)(pib_ / populacao_);
-/* CALCULO NIVEL INTERMEDIARIO TERMINA AQUI*/
+
+super_poder = (float)(populacao + area + pib + ponto_turistico + pib_per1 * (1 / den_pop1));// AQUI ESTA O CALCULO DO SUPER PODER 1
+super_poder_ = (float)(populacao_ + area_ + pib_ + ponto_turistico_ + pib_per2 * (1/ den_pop2));// AQUI ESTA O CALCULO DO SUPER PODER 2
 
 printf("\n"); //ESTA É UMA QUEBRA DE LINHA
 printf("Carta1\n");
 printf("Estado: %s\n", estado);
 printf("Codigo: %s\n", codigo);
 printf("Nome da cidade: %s\n", cidade);
-printf("População: %f milhões\n", populacao);
-printf("Área: %f km²\n", area);
-printf("PIB:%f R$\n", pib);
+printf("População: %u milhões\n", populacao);
+printf("Área: %.2f km²\n", area);
+printf("PIB:%.2f R$\n", pib);
 printf("Pontos Turisticos:%d\n", ponto_turistico);
-printf("Densidade populacional 1: %f hab/km²\n", den_pop1); //RESULTADO NIVEL INTERMEDIARIO
-printf("PIB per capta: %f R$\n", pib_per1); //RESULTADO NIVEL INTERMEDIARIO
+printf("Densidade populacional 1: %.2f hab/km²\n", den_pop1);
+printf("PIB per capta1: %f R$\n", pib_per1);
+printf("Super Poder: %f\n", super_poder);
 
 //AQUI INICIA O RESULTADO CARTA 2
 
@@ -144,13 +100,25 @@ printf("Carta2\n");
 printf("Estado: %s\n", estado_);
 printf("Codigo: %s\n", codigo_);
 printf("Nome da cidade: %s\n", cidade_);
-printf("População: %f milhões\n", populacao_);
-printf("Área: %f km²\n", area_);
-printf("PIB: %f R$\n", pib_);
-printf("Pontos Turisticos:%d\n", ponto_turistico_);
-printf("Densidade populacional 2: %f hab/km²\n", den_pop2); //RESULTADO NIVEL INTERMEDIARIO
-printf("PIB per capta2: %f R$\n", pib_per2); // //RESULTADO NIVEL INTERMEDIARIO
+printf("População: %u milhões\n", populacao_);
+printf("Área: %.2f km²\n", area_);
+printf("PIB: %.2f R$\n", pib_);
+printf("Pontos Turisticos: %d\n", ponto_turistico_);
+printf("Densidade populacional 2: %.2f hab/km²\n", den_pop2); 
+printf("PIB per capta2: %f R$\n", pib_per2); 
+printf("Super Poder: %f\n", super_poder);
+
+// AQUI ESTA A COMPARAÇÃO BOOLEANA SIMPLES
+printf("\n"); //ESTA É UMA QUEBRA DE LINHA
+printf("RESULTADO COMPARAÇÃO!\n");
+printf("Populacao A > Populacao B: %d\n", populacao > populacao_);
+printf("Area A > Area B: %d\n", area > area_);
+printf("Pib A > Pib B: %d\n", pib > pib_);
+printf("Pontos turisticos A > Pontos turisticos B: %d\n", ponto_turistico > ponto_turistico_);
+printf("Densidade populaciol A < Densidade populacional B: %d\n", den_pop1 < den_pop2);
+printf("PIB per capta A > PIB per capta B: %d\n", pib_per1 > pib_per2);
+printf("Super Poder A > Super Poder B: %d\n", super_poder > super_poder_);
+
 
 return 0;
-
 }
