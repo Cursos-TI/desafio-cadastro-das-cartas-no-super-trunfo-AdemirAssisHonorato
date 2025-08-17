@@ -1,39 +1,34 @@
 #include <stdio.h>
 
-/* ATIVIDADE SUPER TRUNFO NIVEL MESTRE
+/* Tema 2 - Super Trunfo em c: Fundamentos e Técnicas Avançadas
+
 NOME: ADEMIR DE ASSIS DA SILVA GONÇALVES JUNIOR CURSO: ENGENHARIA DE SOFTWARE
 
-OBS: SUPER PODER ADICIONADO, MODIFICAÇÃO DE POPULAÇÃO PARA UNSINGED LONG INT E COMPARAÇÃO SIMPLES ADICIONADA
-
-DESDE JÁ AGRADEÇO.
+"Deixei a resultado de saida igual ao que se pede"
 
 */
 
 int main(){
-//AQUI COMEÇA O CIDIGO.
-
+  
 //AQUI FICA AS VARIAVEIS
 
 int ponto_turistico, ponto_turistico_;    
-char estado[80], codigo[4], cidade[120], estado_[80], codigo_[4], cidade_[120];
-float area, pib, area_, pib_, den_pop1, den_pop2, pib_per1, pib_per2;
+char pais[80], codigo[4], cidade[80], pais_[80], codigo_[4], cidade_[80], resultado, resultado2; 
+float area, pib, area_, pib_, den_pop1, den_pop2, pib_per1, pib_per2,super_poder, super_poder_;
 unsigned long int populacao, populacao_;
-float super_poder, super_poder_;
 
 //AQUI INICIA OS DADOS DA CARTA 1
     
 printf("Insira aqui os dados da Carta1\n");
-printf("Insira uma letra para a sua carta\n");
-scanf("%s", estado);
 
-printf("Insira um codigo entre  A01 e A04\n");
-scanf("%s", codigo);
+printf("Insira o nome do Pais para a sua carta\n");
+scanf(" %[^\n]", pais);
 
 printf("Insira o nome da cidade\n");
-scanf("%s", cidade);
+scanf(" %[^\n]", cidade);
 
 printf("Digite o numero da população\n");
-scanf("%ul", &populacao);
+scanf("%lu", &populacao);
 
 printf("Digite a área:\n");
 scanf("%f", &area);
@@ -47,18 +42,17 @@ scanf("%d", &ponto_turistico);
 //AQUI INICIA OS DADOS CARTA 2
 
 printf("\n"); //ESTA É UMA QUEBRA DE LINHA
-printf("Insira aqui os dados da Carta2\n");
-printf("Insira uma letra para a sua carta.\n");
-scanf("%s", estado_);
 
-printf("Insira um codigo entre  B01 e B04\n");
-scanf("%s", codigo_);
+printf("Insira aqui os dados da Carta2\n");
+
+printf("Insira o nome do Pais para a sua carta\n");
+scanf(" %[^\n]", pais_);
 
 printf("Insira o nome da cidade\n");
-scanf("%s", cidade_);
+scanf(" %[^\n]", cidade_);
 
 printf("Digite o numero da população\n");
-scanf("%ul", &populacao_);
+scanf("%lu", &populacao_);
 
 printf("Digite a área:\n");
 scanf("%f", &area_);
@@ -69,56 +63,69 @@ scanf("%f", &pib_);
 printf("Digite quantidade de pontos turisticos, no Estado\n");
 scanf("%d", &ponto_turistico_);
 
+//Aqui esta a comparação ternária
 
-//AQUI INICIA O RESULTADO, SERÁ RESULTADO CARTA 1
-den_pop1 = (float)(populacao / area);
-den_pop2 = (float)(populacao_ / area_);
+resultado > resultado2 ? 1 : 0;
 
-pib_per1 = (float)(pib / populacao);
-pib_per2 = (float)(pib_ / populacao_);
+populacao > populacao_ ? resultado : resultado2;
+area > area_ ? resultado : resultado2;
+pib > pib_ ? resultado : resultado2;
+ponto_turistico > ponto_turistico_ ? resultado : resultado2;
+den_pop1 < den_pop1 ? resultado : resultado2;
+pib_per1 > pib_per2 ? resultado : resultado2;
+super_poder > super_poder_ ? resultado : resultado2;
 
-super_poder = (float)(populacao + area + pib + ponto_turistico + pib_per1 * (1 / den_pop1));// AQUI ESTA O CALCULO DO SUPER PODER 1
-super_poder_ = (float)(populacao_ + area_ + pib_ + ponto_turistico_ + pib_per2 * (1/ den_pop2));// AQUI ESTA O CALCULO DO SUPER PODER 2
-
-printf("\n"); //ESTA É UMA QUEBRA DE LINHA
-printf("Carta1\n");
-printf("Estado: %s\n", estado);
-printf("Codigo: %s\n", codigo);
-printf("Nome da cidade: %s\n", cidade);
-printf("População: %u milhões\n", populacao);
-printf("Área: %.2f km²\n", area);
-printf("PIB:%.2f R$\n", pib);
-printf("Pontos Turisticos:%d\n", ponto_turistico);
-printf("Densidade populacional 1: %.2f hab/km²\n", den_pop1);
-printf("PIB per capta1: %f R$\n", pib_per1);
-printf("Super Poder: %f\n", super_poder);
-
-//AQUI INICIA O RESULTADO CARTA 2
+//AQUI ESTA A COMPARAÇÃO BOOLEANA SIMPLES
 
 printf("\n"); //ESTA É UMA QUEBRA DE LINHA
-printf("Carta2\n");
-printf("Estado: %s\n", estado_);
-printf("Codigo: %s\n", codigo_);
-printf("Nome da cidade: %s\n", cidade_);
-printf("População: %u milhões\n", populacao_);
-printf("Área: %.2f km²\n", area_);
-printf("PIB: %.2f R$\n", pib_);
-printf("Pontos Turisticos: %d\n", ponto_turistico_);
-printf("Densidade populacional 2: %.2f hab/km²\n", den_pop2); 
-printf("PIB per capta2: %f R$\n", pib_per2); 
-printf("Super Poder: %f\n", super_poder);
-
-// AQUI ESTA A COMPARAÇÃO BOOLEANA SIMPLES
+printf("COMPARAÇÃO DAS CARTAS!\n");
 printf("\n"); //ESTA É UMA QUEBRA DE LINHA
-printf("RESULTADO COMPARAÇÃO!\n");
-printf("Populacao A > Populacao B: %d\n", populacao > populacao_);
-printf("Area A > Area B: %d\n", area > area_);
-printf("Pib A > Pib B: %d\n", pib > pib_);
-printf("Pontos turisticos A > Pontos turisticos B: %d\n", ponto_turistico > ponto_turistico_);
-printf("Densidade populaciol A < Densidade populacional B: %d\n", den_pop1 < den_pop2);
-printf("PIB per capta A > PIB per capta B: %d\n", pib_per1 > pib_per2);
-printf("Super Poder A > Super Poder B: %d\n", super_poder > super_poder_);
 
+if (populacao > populacao_){
+    printf("Populacao: Carta 1 venceu (1) \n");
+}else{
+    printf("Populacao: Carta 2 venceu (0)\n");
+}
+
+if (area > area_){
+    printf("Area: Carta 1 venceu (1) \n");
+}else{
+    printf("Area: Carta 2 venceu (0)\n");
+}
+
+if (pib > pib_){
+    printf("PIB: Carta 1 venceu (1) \n");
+}else{
+    printf("PIB: Carta 2 venceu (0)\n");
+}
+
+if (ponto_turistico > ponto_turistico_){
+    printf("Pontos turisticos: Carta 1 venceu (1) \n");
+}else{
+    printf("Pontos turisticos: Carta 2 venceu (0)\n");
+}
+
+if (den_pop1 < den_pop2){
+    printf("Densidade populacional: Carta 1 venceu (1) \n");
+}else{
+    printf("Densidade populacional: Carta 2 venceu (0)\n");
+}
+
+if (pib_per1 > pib_per2){
+    printf("PIB Per Capta: Carta 1 venceu (1) \n");
+}else{
+    printf("PIB Per Capta: Carta 2 venceu (0)\n");
+}
+
+if (super_poder > super_poder_){
+    printf("Super poder: Carta 1 venceu (1) \n");
+}else{
+    printf("Super poder: Carta 2 venceu (0)\n");
+}
+
+printf("\n"); //ESTA É UMA QUEBRA DE LINHA
+
+printf("FIM DE JOGO");
 
 return 0;
 }
